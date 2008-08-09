@@ -1,0 +1,20 @@
+= Synthesis
+
+An easy way to add common finders to your Rails controllers.
+
+== Installation
+
+  gem sources -a http://gems.github.com (you only have to do this once)
+  sudo gem install pelargir-finder_filter
+
+== Usage
+
+  finder_filter :user, :by => :permalink, :only => [:show, :edit]
+
+== Git
+
+  git://github.com/pelargir/finder_filter.git
+
+== Contributors
+
+Matthew Bass
