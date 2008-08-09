@@ -40,19 +40,31 @@ finder_filter reduces this pattern to a single line:
 To find based on a column other than ID:
 
   finder_filter :user, :by => :name
-  # equivalent to:
-  #   @user = User.find_by_name(params[:id])
+    # equivalent to:
+    #   @user = User.find_by_name(params[:id])
 
 To find based on a param other than ID:
 
   finder_filter :user, :param => :permalink
-  # equivalent to:
-  #   @user = User.find(params[:permalink])
+    # equivalent to:
+    #   @user = User.find(params[:permalink])
 
 The standard Rails :only and :except options can also be used:
 
   before_filter :find_user, :only => [:show, :edit]
   before_filter :find_user, :except => [:index]
+
+== Tests
+
+To run the tests:
+
+  rake test
+
+== Dependencies
+
+actionpack > 2.0.1
+mocha > 0.5.6
+test-spec > 0.4.0
 
 == Git
 
