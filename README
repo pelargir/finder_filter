@@ -9,7 +9,45 @@ An easy way to add common finders to your Rails controllers.
 
 == Usage
 
-  finder_filter :user, :by => :permalink, :only => [:show, :edit]
+finder_filter is intended to replace one-off before filters that you might
+commonly write in your Rails controllers. For example:
+
+  class UsersController < ActionController::Base
+    before_filter :find_user, :only => [:show, :edit]
+    
+    def show; end
+    def edit; end
+    
+    def find_user
+      @user = User.find(params[:id)
+    end
+  end
+
+finder_filter reduces this pattern to a single line:
+
+  class UsersController < ActionController::Base
+    finder_filter :user, :only => [:show, :edit]
+    
+    def show; end
+    def edit; end
+  end
+
+To find based on a column other than ID:
+
+  finder_filter :user, :by => :name
+    # equivalent to:
+    #   @user = User.find_by_name(params[:id])
+
+To find based on a param other than ID:
+
+  finder_filter :user, :param => :permalink
+    # equivalent to:
+    #   @user = User.find(params[:permalink])
+
+The standard Rails :only and :except options can also be used:
+
+  before_filter :find_user, :only => [:show, :edit]
+  before_filter :find_user, :except => [:index]
 
 == Git
 
