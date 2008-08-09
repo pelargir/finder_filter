@@ -1,5 +1,12 @@
 module FinderFilter
-  def finder_filter(name, options={})
+  def finder_filter(*args)
+    options = args.extract_options!
+    name = unless args.first.nil?
+      args.first
+    else
+      controller_name
+    end
+    
     by = options.delete(:by)
     param = options.delete(:param) || :id
     before_filter "find_#{name}", options

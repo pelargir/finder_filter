@@ -31,6 +31,15 @@ commonly write in your Rails controllers. For example:
 finder_filter reduces this pattern to a single line:
 
   class UsersController < ActionController::Base
+    finder_filter :only => [:show, :edit]
+    
+    def show; end
+    def edit; end
+  end
+  
+Or, if you want to specify the model to find:
+
+  class UsersController < ActionController::Base
     finder_filter :user, :only => [:show, :edit]
     
     def show; end
