@@ -1,14 +1,10 @@
 module FinderFilter
   def finder_filter(*args)
     options = args.extract_options!
-    name = unless args.first.nil?
-      args.first
-    else
-      controller_name
-    end
-    
+    name = args.empty? ? controller_name.singularize : args.first
     by = options.delete(:by)
     param = options.delete(:param) || :id
+    
     before_filter "find_#{name}", options
     
     define_method "find_#{name}" do
