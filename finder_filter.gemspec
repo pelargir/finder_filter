@@ -13,7 +13,8 @@ Gem::Specification.new do |s|
 		"Rakefile", 
 		"finder_filter.gemspec", 
 		"lib/finder_filter.rb",
-		"spec/finder_filter_spec.rb"
+		"test/test_helper.rb",
+		"test/finder_filter_test.rb"
 		]
   s.rdoc_options = ["--main", "README"]
   s.extra_rdoc_files = ["README"]
