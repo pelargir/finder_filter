@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.authors  = ["Matthew Bass"]
   s.files    = [
+    "CHANGELOG",
 		"README", 
 		"Rakefile", 
 		"finder_filter.gemspec", 

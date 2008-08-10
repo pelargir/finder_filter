@@ -7,6 +7,9 @@ An easy way to add common finders to your Rails controllers.
   gem sources -a http://gems.github.com (you only have to do this once)
   sudo gem install pelargir-finder_filter
 
+To use with a Rails 2.1 app, edit the environment.rb file and add an
+entry for the gem to the Rails::Initializer config block.
+
 == Usage
 
 finder_filter is intended to replace one-off before filters that you might
