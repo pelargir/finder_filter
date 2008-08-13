@@ -68,7 +68,7 @@ The standard Rails :only and :except options can also be used:
 
 == Tests
 
-To run the tests:
+To run the tests, you must have the mocha and test-spec gems installed.
 
   rake test
 
