@@ -37,9 +37,14 @@ describe FinderFilter do
     @controller.finder_filter :prepend => true
   end
   
-  it "should assign prepend before filter when prepend option specified with other options" do
+  it "should assign prepend before filter when prepend option specified with only option" do
     @controller.expects(:prepend_before_filter).with(:"find_test", :only => [:show, :edit])
     @controller.finder_filter :only => [:show, :edit], :prepend => true
+  end
+  
+  it "should assign prepend before filter when prepend option specified with multiple options" do
+    @controller.expects(:prepend_before_filter).with(:"find_test", :only => [:show, :edit])
+    @controller.finder_filter :only => [:show, :edit], :prepend => true, :by => "name"
   end
   
   it "should define method when model specified" do
