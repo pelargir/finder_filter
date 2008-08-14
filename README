@@ -61,7 +61,7 @@ To find based on a param other than ID:
     # equivalent to:
     #   @user = User.find(params[:permalink])
 
-Finally, you can specify that prepend_before_filter is used:
+You can specify that prepend_before_filter is used:
 
 	finder_filter :user, :only => [:show, :edit], :prepend => true
 		# generates:
@@ -88,6 +88,12 @@ test-spec > 0.4.0
 
   git://github.com/pelargir/finder_filter.git
 
+== Author
+
+  Matthew Bass
+    email: pelargir at gmail dot com
+    blog: http://matthewbass.com
+
 == Contributors
 
-Matthew Bass, Kevin Smith
+Kevin Smith, Steve Mohapi-Banks

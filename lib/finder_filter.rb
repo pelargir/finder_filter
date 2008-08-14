@@ -6,7 +6,8 @@ module FinderFilter
     param = options.delete(:param) || :id
     prepend = options.delete(:prepend) || false
     
-    send(prepend ? :prepend_before_filter : :before_filter, :"find_#{name}", options)
+    filter_method = prepend ? :prepend_before_filter : :before_filter
+    send(filter_method, "find_#{name}".intern, options)
     
     define_method "find_#{name}" do
       klass = name.to_s.classify.constantize
