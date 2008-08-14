@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "finder_filter"
   s.version  = "0.6"
-  s.date     = "2008-08-14"
+  s.date     = "2008-08-13"
   s.summary  = "An easy way to add common finders to your Rails controllers."
   s.email    = "pelargir@gmail.com"
   s.homepage = "http://github.com/indmill/finder_filter"
