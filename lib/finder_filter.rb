@@ -4,8 +4,9 @@ module FinderFilter
     name = args.empty? ? controller_name.singularize : args.first
     by = options.delete(:by)
     param = options.delete(:param) || :id
+    prepend = options.delete(:prepend) || false
     
-    before_filter "find_#{name}", options
+    send(prepend ? :prepend_before_filter : :before_filter, :"find_#{name}", options)
     
     define_method "find_#{name}" do
       klass = name.to_s.classify.constantize

@@ -61,6 +61,12 @@ To find based on a param other than ID:
     # equivalent to:
     #   @user = User.find(params[:permalink])
 
+Finally, you can specify that prepend_before_filter is used:
+
+	finder_filter :user, :only => [:show, :edit], :prepend => true
+		# generates:
+		#		prepend_before_filter :find_user, :only => [:show, :edit]
+
 The standard Rails :only and :except options can also be used:
 
   before_filter :find_user, :only => [:show, :edit]
