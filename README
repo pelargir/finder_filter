@@ -51,7 +51,7 @@ finder_filter reduces this pattern to a single line:
 Or, if you want to specify the model to find:
 
   class UsersController < ActionController::Base
-    finder_filter :user, :only => [:show, :edit]
+    finder_filter :person, :only => [:show, :edit]
     
     def show; end
     def edit; end
@@ -80,6 +80,24 @@ The standard Rails :only and :except options can also be used:
   before_filter :find_user, :only => [:show, :edit]
   before_filter :find_user, :except => [:index]
 
+== Resource Nesting
+
+If your controller is a nested resource, you might want the find
+to be performed on the parent model. For example:
+
+  class PostsController < ActionController::Base
+    before_filter :find_post
+
+    def find_post
+      @topic = Topic.find(params[:topic_id])
+      @post = @topic.posts.find(params[:id])
+    end
+  end
+  
+This can be easily handled using finder_filter:
+
+  finder_filter :nested => :topic
+
 == Tests
 
 To run the tests, you must have the mocha and test-spec gems installed.
@@ -89,12 +107,6 @@ To run the tests, you must have the mocha and test-spec gems installed.
 == Dependencies
 
 actionpack > 2.0.1
-mocha > 0.5.6
-test-spec > 0.4.0
-
-== Git
-
-  git://github.com/pelargir/finder_filter.git
 
 == Author
 
