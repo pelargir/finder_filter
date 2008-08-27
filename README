@@ -98,6 +98,12 @@ This can be easily handled using finder_filter:
 
   finder_filter :nested => :topic
 
+== from_param
+
+If you have Michael Bleigh's from_param (http://github.com/mbleigh/from_param/tree/master)
+installed, finder_filter will work transparently with it. This gives you the dual benefit
+of SEO-friendly URLs and DRY controller code.
+
 == Tests
 
 To run the tests, you must have the mocha and test-spec gems installed.

@@ -1,3 +1,5 @@
+8/27/08 - Support for from_param [Mike Gunderloy]
+
 8/15/08 - Support for nested resources. [Matthew Bass]
 
 8/14/08 - Optional before filter prepending. [Steve Mohapi-Banks]
