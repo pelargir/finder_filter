@@ -15,19 +15,19 @@ module FinderFilter
         nested_klass = nested.to_s.classify.constantize
         nested_param = "#{nested}_id".intern
         
-        if nested_klass.send("param_column")
+        if nested_klass.method_defined? :param_column
           nested_item = nested_klass.from_param(params[nested_param])
         else
           nested_item = by ? nested_klass.send("find_by_#{by}", params[nested_param]) : nested_klass.find(params[nested_param])
         end
-        if klass.send("param_column")
+        if klass.method_defined? :param_column
           item = nested_item.send(name.to_s.pluralize).from_param(params[param])
         else
           item = by ? nested_item.send(name.to_s.pluralize).send("find_by_#{by}", params[param]) : nested_item.send(name.to_s.pluralize).find(params[param])
         end
         instance_variable_set("@#{nested}", nested_item)
       else
-        if klass.send("param_column")
+        if klass.method_defined? :param_column
           item = klass.from_param(params[param])
         else
           item = by ? klass.send("find_by_#{by}", params[param]) : klass.find(params[param])
