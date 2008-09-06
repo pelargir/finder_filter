@@ -98,6 +98,21 @@ This can be easily handled using finder_filter:
 
   finder_filter :nested => :topic
 
+Nested resources will only do a find on the parent model if the parent id is supplied.
+This allows you to handle routing setups like this:
+
+map.resources :posts
+map.resources :topics do |topic|
+  topic.resources :posts
+end
+
+With this setup, both /posts/1 and /topics/1/posts/2 will be valid URLs, and will do the 
+right thing if you include 
+
+finder_filter :nested => :topic
+
+in your Posts controller.
+
 == from_param
 
 If you have Michael Bleigh's from_param (http://github.com/mbleigh/from_param/tree/master)

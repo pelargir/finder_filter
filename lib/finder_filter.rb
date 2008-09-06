@@ -11,7 +11,7 @@ module FinderFilter
     
     define_method "find_#{name}" do
       klass = name.to_s.classify.constantize
-      if nested
+      if nested && params.include?("#{nested}_id")
         nested_klass = nested.to_s.classify.constantize
         nested_param = "#{nested}_id".intern
         
