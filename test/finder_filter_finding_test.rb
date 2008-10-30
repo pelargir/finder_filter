@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/test_helper')
 
-class BooksController < ActionController::Base; extend FinderFilter; def show; end; end
+class BooksController < ActionController::Base; extend FinderFilter; end
 class Book < ActiveRecord::Base; end
 class Novel < ActiveRecord::Base; end
 class Tome < ActiveRecord::Base; def param_column; "foo"; end; end
@@ -8,6 +8,12 @@ class Tome < ActiveRecord::Base; def param_column; "foo"; end; end
 describe FinderFilter do
   before do
      @books_controller = BooksController.new
+     @books_controller.stubs(:flash).returns({})
+     @books_controller.stubs(:index_path)
+     @books_controller.stubs(:books_path)
+     @books_controller.stubs(:novels_path)
+     @books_controller.stubs(:tomes_path)
+     @books_controller.stubs(:redirect_to)
   end
   
   it "should call find on the model" do
@@ -37,5 +43,4 @@ describe FinderFilter do
     Tome.expects(:from_param).with(7)
     @books_controller.find_tome
   end
-
 end

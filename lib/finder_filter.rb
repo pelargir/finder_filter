@@ -33,6 +33,11 @@ module FinderFilter
           item = by ? klass.send("find_by_#{by}", params[param]) : klass.find(params[param])
         end
       end
+      if item.nil?
+        flash[:error] = "The requested #{name} does not exist."
+        index_path = nested ? send("#{nested}_path", nested_item) : send("#{name.to_s.pluralize}_path")
+        redirect_to index_path
+      end
       instance_variable_set("@#{name}", item)
     end
   end

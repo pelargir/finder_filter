@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--main", "README"]
   s.extra_rdoc_files = ["README"]
   s.add_dependency("actionpack", ["> 2.0.1"])
+  s.add_dependency("sqlite3-ruby", ["> 1.2.1"])
 end

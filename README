@@ -121,7 +121,7 @@ of SEO-friendly URLs and DRY controller code.
 
 == Tests
 
-To run the tests, you must have the mocha and test-spec gems installed.
+To run the tests, you must have the mocha, test-spec, and sqlite3 gems installed.
 
   rake test
 
